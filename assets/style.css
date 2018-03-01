@@ -1,0 +1,33 @@
+html, body {
+    height: 75%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+h1 {
+    color: darkblue;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;    
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: darkgrey;
+}
+
+.variable {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+}

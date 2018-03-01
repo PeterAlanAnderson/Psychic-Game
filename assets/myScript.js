@@ -13,7 +13,6 @@ let secretLetter = "g";
 
 
 
-
 // ************************Methods***********************
 
 
@@ -31,6 +30,8 @@ function printVars() {
 // then reset the game state.
 
 function winner() {
+    randomLetter();
+    console.log("the new letter is "+secretLetter)
     numWins++;
     guessesLeft = 9;
     guessesSoFar = "";
@@ -38,6 +39,8 @@ function winner() {
 }
 
 function loser() {
+    randomLetter();
+    console.log("the new letter is "+secretLetter)
     numLosses++;
     // shame++
     guessesLeft = 9;
@@ -51,7 +54,7 @@ function loser() {
 // decrements guessesLeft, then prints.  
 
 function addLetter(keyInput) {
-    if (guessesSoFar.length === 0) {
+    if (guessesSoFar.length === 0) { //skips the comma if this is the first letter
         guessesSoFar = keyInput;
     } else {
         guessesSoFar = guessesSoFar + ", " + keyInput;
@@ -67,8 +70,8 @@ function addLetter(keyInput) {
 
 function randomLetter() {
     let chars = "abcdefghijklmnopqrstuvwxyz";
-    let rnum = Math.floor(Math.random() * chars.length);
-    secretLetter = chars.substring(rnum+1);
+    let rnum = chars[Math.floor(Math.random() * chars.length)];
+    secretLetter = rnum;
     console.log(secretLetter);
 }
 
@@ -79,12 +82,12 @@ function randomLetter() {
 // then calls the function to add a letter to the game.
 
 document.addEventListener('keypress', (event) => {
-    const keyName = event.key;
+    const keyName = event.key.toLowerCase();
     console.log("key press detected: "+keyName);
-    if (keyName == secretLetter) {
-        winner();
-    } else if (guessesLeft === 1) {
-        loser();
+    if (keyName === secretLetter) {       //if the player wins
+        winner();                       //count the win
+    } else if (guessesLeft === 1) {     //but if they lose
+        loser();                        //count the loss
     } else {
         addLetter(keyName);
     }
